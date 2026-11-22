@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Clash — a tactical card battler</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Title screen -->
+  <section id="screen-title" class="screen title-screen">
+    <div class="title-embers" aria-hidden="true">▲ ✦ ▲ ❄ ◆ ▲ ✦</div>
+    <h1 class="game-title">EMBER CLASH</h1>
+    <p class="game-tagline">A tactical card battler. Outdraw the Cinder Warden,<br>spend your embers wisely, and take the table.</p>
+    <div class="title-buttons">
+      <button id="play-button" class="big-button" type="button">▶&nbsp; Play</button>
+      <button id="how-button" class="big-button ghost" type="button">How to play</button>
+    </div>
+    <div id="how-to" class="how-to" hidden>
+      <h2>How to play</h2>
+      <ul>
+        <li>Both fighters start at <b>30 life</b>. Reduce the Warden to 0 to win.</li>
+        <li>Each turn you gain energy (1, then 2, … up to 10) and draw a card.</li>
+        <li>Click a card — or press <b>1–7</b> — to play it. Each card costs energy.</li>
+        <li><b>▲ Flame</b> deals damage · <b>❄ Frost</b> damages and shields · <b>❦ Verdant</b> heals · <b>◆ Stone</b> shields · <b>✦ Spark</b> draws cards.</li>
+        <li>Shield soaks damage first, then halves at the start of your turn. Burn ticks at the start of a turn.</li>
+        <li>Press <b>Enter</b> to end your turn. The Warden plays after you.</li>
+      </ul>
+    </div>
+    <p class="title-foot">An original game · no network · sound synthesized live · <button id="mute-button" class="link-button" type="button">🔊 Sound on</button></p>
+  </section>
+
+  <!-- The table -->
+  <section id="screen-table" class="screen table-screen" hidden>
+    <header class="table-head">
+      <span id="round-label" class="round-label">Round 1</span>
+      <span id="score-label" class="score-label">You 0 — 0 Warden</span>
+      <span id="turn-banner" class="turn-banner"></span>
+    </header>
+
+    <div class="fighter-row opponent-row">
+      <div class="portrait" id="ai-portrait">
+        <span class="portrait-glyph">👹</span>
+        <span id="ai-name" class="fighter-name">Cinder Warden</span>
+        <span id="ai-status" class="fighter-status"></span>
+      </div>
+      <div class="fighter-body">
+        <div id="ai-vitals" class="vitals"></div>
+        <div id="ai-hand" class="hand hand-opponent" aria-label="Opponent's hand"></div>
+        <div id="ai-deck" class="deck-label"></div>
+      </div>
+    </div>
+
+    <div class="table-middle">
+      <div class="table-centre">
+        <span class="table-emblem">EMBER CLASH</span>
+        <button id="end-turn" class="big-button end-turn-button" type="button">End Turn ⏎</button>
+      </div>
+      <aside class="log-panel">
+        <h2>Match log</h2>
+        <ul id="match-log"></ul>
+      </aside>
+    </div>
+
+    <div class="fighter-row player-row">
+      <div class="portrait" id="player-portrait">
+        <span class="portrait-glyph">🧑‍🚀</span>
+        <span id="player-name" class="fighter-name">Ember Knight</span>
+      </div>
+      <div class="fighter-body">
+        <div id="player-vitals" class="vitals"></div>
+        <div id="player-energy"></div>
+        <div id="player-hand" class="hand hand-player" aria-label="Your hand"></div>
+        <div id="player-deck" class="deck-label"></div>
+      </div>
+    </div>
+    <p class="table-hint">Click a card to play it · keys 1–7 play · Enter ends the turn · Esc returns to the title</p>
+  </section>
+
+  <!-- Win / loss screen -->
+  <section id="screen-end" class="screen end-screen" hidden>
+    <h1 id="end-title" class="end-title win">VICTORY!</h1>
+    <p id="end-subtitle" class="end-subtitle"></p>
+    <div id="end-stats" class="end-stats"></div>
+    <div class="title-buttons">
+      <button id="again-button" class="big-button" type="button">↻&nbsp; Play again</button>
+      <button id="title-button" class="big-button ghost" type="button">Title screen</button>
+    </div>
+  </section>
+
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
